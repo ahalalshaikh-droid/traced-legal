@@ -58,4 +58,4 @@ opt-in.
 
 ## Contact
 
-Questions about this policy: **ahalalshaikh@gmail.com**
+Questions about this policy: **tracedapp@outlook.com**
