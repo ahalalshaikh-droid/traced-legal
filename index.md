@@ -59,3 +59,4 @@ opt-in.
 ## Contact
 
 Questions about this policy: **tracedapp@outlook.com**
+[Contact Support](support.html)
