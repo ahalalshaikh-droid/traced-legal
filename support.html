@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traced — Support</title>
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --surface-raised: #EDEAE2;
+    --text: #0B0D0F;
+    --text-secondary: #5A5F68;
+    --text-tertiary: #8A8F98;
+    --border: #E2DED3;
+    --tint: #647F00;
+    --primary: #C9FF3E;
+    --primary-text: #0B0D0F;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0B0D0F;
+      --surface: #1A1D21;
+      --surface-raised: #24282E;
+      --text: #F5F3EE;
+      --text-secondary: #8A8F98;
+      --text-tertiary: #5A5F68;
+      --border: #26292E;
+      --tint: #C9FF3E;
+      --primary: #C9FF3E;
+      --primary-text: #0B0D0F;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vw, 56px) clamp(20px, 5vw, 28px) 40px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wordmark-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .wordmark-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex: none;
+  }
+
+  .wordmark {
+    font-family: "Arial Black", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 5vw, 27px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Consolas, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 14px;
+  }
+
+  section + section {
+    margin-top: 40px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    text-wrap: balance;
+  }
+
+  .intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 56ch;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px 16px;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    margin-top: -2px;
+    border-right: 2px solid var(--text-tertiary);
+    border-bottom: 2px solid var(--text-tertiary);
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    summary::after { transition: transform 0.18s ease; }
+  }
+
+  details[open] summary::after {
+    transform: rotate(225deg);
+    margin-top: 2px;
+  }
+
+  summary:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--tint);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .faq-answer {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding-bottom: 16px;
+    max-width: 60ch;
+  }
+
+  .contact-card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-card p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    max-width: 52ch;
+  }
+
+  .email-button {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: var(--primary-text);
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Consolas, monospace;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+  }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Consolas, monospace;
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="wordmark-row">
+      <span class="wordmark-dot" aria-hidden="true"></span>
+      <span class="wordmark">Traced</span>
+    </div>
+    <p class="tagline">Capture a thought before it slips away.</p>
+  </header>
+
+  <section>
+    <p class="intro">
+      Need a hand with Traced? Here are answers to the most common
+      questions. If yours isn't below, email us — a real person reads
+      every message.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Common Questions</p>
+    <div class="faq-list">
+      <details>
+        <summary>How do I record a voice note?</summary>
+        <p class="faq-answer">
+          Open the Home tab and tap the mic button to start recording, then
+          tap it again to stop. Traced transcribes it automatically and
+          saves it to your Thoughts inbox.
+        </p>
+      </details>
+
+      <details>
+        <summary>Where is my data stored?</summary>
+        <p class="faq-answer">
+          Entirely on your device. Traced has no account and no server of
+          ours — your notes, recordings, and folders never leave your
+          phone.
+        </p>
+      </details>
+
+      <details>
+        <summary>What happens if I delete the app?</summary>
+        <p class="faq-answer">
+          All notes and recordings are permanently removed, since nothing
+          is stored anywhere else. If you want a backup first, use
+          Settings → Data Export / Backup.
+        </p>
+      </details>
+
+      <details>
+        <summary>What does Traced Pro include?</summary>
+        <p class="faq-answer">
+          Unlimited folders and subfolders for deeper organizing, plus
+          every future Pro feature — for one one-time payment. No
+          subscription, ever.
+        </p>
+      </details>
+
+      <details>
+        <summary>I already bought Pro, but it's not unlocked here.</summary>
+        <p class="faq-answer">
+          Open Settings → Traced Pro → Restore Purchases. This restores any
+          past purchase tied to your Apple ID at no extra charge.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does Traced send my notes anywhere?</summary>
+        <p class="faq-answer">
+          No. Your notes stay on your device. Voice notes are transcribed
+          using Apple's built-in speech recognition, which is the only
+          part of the process that can involve Apple's systems — Traced
+          itself never transmits your notes.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Contact</p>
+    <div class="contact-card">
+      <p>
+        Still stuck, found a bug, or just want to say hello? Email us
+        anytime — we read and reply to every message, in English or
+        Arabic.
+      </p>
+      <a class="email-button" href="mailto:tracedapp@outlook.com">
+        tracedapp@outlook.com
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Traced</span>
+    <span>Made for capturing thoughts before they fade</span>
+  </footer>
+</div>
+</body>
+</html>
